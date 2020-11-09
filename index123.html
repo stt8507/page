@@ -1,11 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h3>1234</h3>
-</body>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+
+    <title>Hello, world!</title>
+    <style>
+      h2 {
+        display: none;
+        z-index: inherit -1;
+        color: white;
+      }
+      html {
+        overflow: hidden;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="kk" onclick="ert(this)">Hello, world!</h1>
+    <h2 id="ss"></h2>
+    <script>
+      function ert(obj) {
+        var obj = document.getElementById("ss");
+        var jobj = $(obj);
+        alert(obj);
+        alert(jobj);
+
+        for (let index = 0; index < 5; index++) {
+          decideWritingMode(obj, jobj);
+        }
+        
+      }
+
+      function decideWritingMode(obj, jobj) {
+
+        var ran_length = parseInt(Math.random() * 10 + 1);
+        var sentence = generateSentence(ran_length);
+
+        jobj.fadeIn("slow", function () {
+          jobj.fadeOut("slow");
+        });
+        console.log(sentence);
+        if ((length / 2) % 1 === 0) {
+          jobj.css({
+            "writing-mode": "vertical-lr",
+          });
+        } else {
+          jobj.css({
+            "writing-mode": "horizontal-tb",
+          });
+        }
+
+        jobj.text(sentence);
+        decidePosition(obj);
+      }
+
+      function decidePosition(obj) {
+        
+        var position_top = parseInt(Math.random() * 100).toString() + "%";
+        var position_right = parseInt(Math.random() * 100).toString() + "%";
+        var position_bottom = parseInt(Math.random() * 100).toString() + "%";
+        var position_left = parseInt(Math.random() * 100).toString() + "%";
+
+        obj.style.position = "absolute";
+        obj.style.top = position_top;
+        obj.style.right = position_right;
+        obj.style.bottom = position_bottom;
+        obj.style.left = position_left;
+      }
+
+      function generateSentence(length) {
+        var sentence = "";
+        for (let index = 0; index < length; index++) {
+          var ran_content = Math.random() * 20901 + 19968; //中文字範疇：19968 ~ 40869
+          var n = "0x" + parseInt(ran_content).toString(16);
+          var s = String.fromCodePoint(n);
+          sentence += s;
+        }
+        return sentence;
+      }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  </body>
 </html>
