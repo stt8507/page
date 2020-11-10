@@ -28,24 +28,27 @@
     </style>
   </head>
   <body>
-    <h1 id="kk" onclick="ert(this)">Hello, world!</h1>
-    <h2 id="ss"></h2>
-    <script>
-      function ert(obj) {
-        var obj = document.getElementById("ss");
-        var jobj = $(obj);
-        alert(obj);
-        alert(jobj);
+    <h1 id="kk" onclick="ert()">Hello, world!</h1>
+    <h2 id="s0"></h2>
+    <h2 id="s1"></h2>
+    <h2 id="s2"></h2>
+    <h2 id="s3"></h2>
+    <h2 id="s4"></h2>
 
+    <script>
+      function ert() {
         for (let index = 0; index < 5; index++) {
-          decideWritingMode(obj, jobj);
+          var s = "s" + index;
+          var obj = document.getElementById(s);
+          var jobj = $(obj);
+          decideWritingMode(obj, jobj); 
         }
         
       }
 
       function decideWritingMode(obj, jobj) {
-
-        var ran_length = parseInt(Math.random() * 10 + 1);
+        //決定隨機產生的字串
+        var ran_length = parseInt(Math.random() * 9 + 1);
         var sentence = generateSentence(ran_length);
 
         jobj.fadeIn("slow", function () {
@@ -65,7 +68,7 @@
         jobj.text(sentence);
         decidePosition(obj);
       }
-
+      //決定字串出現的位置
       function decidePosition(obj) {
         
         var position_top = parseInt(Math.random() * 100).toString() + "%";
@@ -80,6 +83,7 @@
         obj.style.left = position_left;
       }
 
+      //組建任意長度的句子
       function generateSentence(length) {
         var sentence = "";
         for (let index = 0; index < length; index++) {
