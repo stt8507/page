@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>Document</title>
+    <script>
+      const promise = new Promise(function (resolveParam, rejectParam) {
+        //rejectParam(new Error("error!"));
+        resolveParam(1);
+        
+      });
+
+      promise
+        .then((value) => {
+          console.log(value); // 1
+          return value + 1;
+        })
+        .then((value) => {
+          console.log(value); // 2
+          return value + 2;
+        })
+        .catch((err) => console.log(err.message));
+    </script>
+  </head>
+  <body>
+      <h1>123</h1>
+  </body>
+</html>

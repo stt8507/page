@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>Document</title>
+  </head>
+  <script>
+        $(document).ready(async function () {
+          /*
+          let mingRun = await runPromise('小明');
+          console.log(mingRun);
+          let auntieRun = await runPromise('漂亮阿姨');
+          console.log(auntieRun);
+          */
+          for (let index = 0; index < 5; index++) {
+            runPromise()
+            .then((r) => {
+              console.log(r);
+              var obj = $('h1');
+              obj.fadeIn("slow");
+              r= r+1;
+              return r;
+            }).then((r) => {
+              console.log(r);
+              var obj = $('h1');
+              obj.fadeOut("slow");
+              r= r+1;
+              return r;
+            }).then((r) => {
+              var obj = $('h1');
+              obj.fadeIn("slow");
+              console.log(r);
+              return r;
+            }).catch((er) => console.log(er));
+          }
+           
+          
+          
+        });
+
+        function runPromise()  {
+            console.log('async function runPromise start');
+            return new Promise((resolve, reject) => {
+              // 傳入 resolve 與 reject，表示資料成功與失敗
+              resolve(1);
+            });
+        }
+
+
+  </script>
+  <body>
+    <h1 style="display: none;">123</h1>
+  </body>
+</html>
